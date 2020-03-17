@@ -33,7 +33,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link text-uppercase active" href="index.html">News Portal</a>
+              <a class="nav-link text-uppercase <?php if($title == 'HOME - SIMPATIKU') {echo "active";}?> " href="./">News Portal</a>
             </li>
             <li class="nav-item">
               <a class="nav-link text-uppercase" href="data-statistik.html">Data Statistik</a>
@@ -41,14 +41,13 @@
             <li class="nav-item">
               <a class="nav-link text-uppercase" href="table.html">Table</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link text-uppercase" href="info-flyer.html">Info Flyer</a>
+              <a class="nav-link text-uppercase <?php if ($title == 'Info Flyer - SIMPATIKU'){echo "active";} ?>"  href="<?= base_url('info-flayer')?>">Info Flyer</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-uppercase" href="peta-kab.html">Peta Kab</a>
+              <a class="nav-link text-uppercase <?php if ($title == 'Info Peta - SIMPATIKU'){echo "active";} ?>" href="<?= base_url('peta-kab')?>">Peta Kab</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-uppercase" href="kantor.html">Kantor</a>
+              <a class="nav-link text-uppercase <?php if ($title == 'Office - SIMPATIKU'){echo "active";} ?>" href="<?= base_url('office')?>">Kantor</a>
             </li>
           </ul>
         </div>

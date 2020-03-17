@@ -21,4 +21,10 @@ class Home extends CI_Controller
     $this->layout->load('detail_page', ['title' => $data['title'] . ' - SIMPATIKU', 'data' => $data]);
   }
 
+  public function office(){
+  	$data = $this->db->get('settings')->row_array();
+  	$this->layout->load('office', ['title' => 'Office - SIMPATIKU','data'=> $data]);
+  }
+
+
 }
