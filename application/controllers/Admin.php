@@ -43,7 +43,7 @@ class Admin extends CI_Controller
 		}
 		$this->db->order_by('updated_at', 'desc');
 		$data = $this->NewsModel->get();
-		$this->layout->load('news', ['title' => 'Master News - Admin Panel', 'data' => $data], true);
+		$this->layout->load('news', ['title' => 'Master News', 'data' => $data], true);
 	}
 
 	private function uploadImages($images = false, $id = false)
