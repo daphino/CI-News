@@ -33,7 +33,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link text-uppercase <?php if($title == 'HOME - SIMPATIKU') {echo "active";}?> " href="./">News Portal</a>
+              <a class="nav-link text-uppercase <?php if($title == 'HOME - SIMPATIKU') {echo "active";}?> " href="<?= base_url() ?>">News Portal</a>
             </li>
             <li class="nav-item">
               <a class="nav-link text-uppercase" href="data-statistik.html">Data Statistik</a>

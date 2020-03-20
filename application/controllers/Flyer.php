@@ -17,7 +17,8 @@ class Flyer extends CI_Controller
 
 	public function detail($id)
 	{
-		$data = $this->FlyerModel->getFlyers($id);
+		$data = $this->FlyerModel->getFlyer($id);
+	
 		$this->layout->load('flyer_detail', ['title' => $data['title'] . ' - SIMPATIKU', 'data' => $data]);
 	}
 

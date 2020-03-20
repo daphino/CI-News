@@ -21,20 +21,13 @@ class FlyerModel extends CI_Model
 
 	public function getFlyers($id = false)
 	{
-		if ($id == FALSE) {
-			$this->db->select('*, f.id as fid');
-			$this->db->from('flyers as f');
-			$this->db->join('users as u', 'f.created_by = u.id');
-			$this->db->order_by('updated_at', 'desc');
-			$q = $this->db->get();
-			return $q->result_array();
+		if ($id) {
+			$this->db->where('id', $id);
+			$q = $this->db->get('flyers');
+			return $q->row_array();
 		}
-		$this->db->select('*, f.id as fid');
-		$this->db->from('flyers as f');
-		$this->db->join('users as u', 'f.created_by = u.id');
-		$this->db->where('f.id', $id);
-		$q = $this->db->get();
-		return $q->row_array();
+		$q = $this->db->get('flyers');
+		return $q->result_array();
 	}
 
 

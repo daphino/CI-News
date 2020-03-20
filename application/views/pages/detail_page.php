@@ -17,8 +17,8 @@
             <!-- The slideshow -->
             <div class="carousel-inner">
               <?php foreach($data['images'] as $key => $item ): ?>
-                <div class="carousel-item <? if($key == 0) { echo 'active'; } ?>">
-                <img src="<?= base_url('uploads/'.$item['image_url']) ?>" class="d-block w-100" alt="<?= $data['title'] ?>" style="max-height: 300px;">
+                <div class="carousel-item my-3 <?php if($key == 0) { echo 'active'; } ?>">
+                  <img src="<?= $item['image_url'] ?>" class="d-block w-100" alt="<?= $data['title'] ?>" style="max-height: 300px;">
                 </div>
               <?php endforeach; ?>
             </div>
