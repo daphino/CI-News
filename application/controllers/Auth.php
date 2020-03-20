@@ -27,9 +27,6 @@ class Auth extends CI_Controller
 
 		$cek = $this->UserModel->checkLog("users",$where);
 
-
-
-
 		if($cek){
 			$this->db->where('email', $where['email']);
 			$data = $this->db->get('users')->row_array();
@@ -51,6 +48,8 @@ class Auth extends CI_Controller
 	public function logout(){
 		unset($_SESSION['user_id']);
 		unset($_SESSION['logged_in']);
+		unset($_SESSION['name']);
+		unset($_SESSION['email']);
 		redirect('admin');
 	}
 
