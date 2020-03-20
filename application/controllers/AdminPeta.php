@@ -23,14 +23,17 @@ class AdminPeta extends CI_Controller
 
 	public function store()
 	{
-		$banner = $_FILES['file_url'];
-		$bannerName = $this->uploadFile($banner);
+		$banner = $_FILES['banner_url'];
+		$file = $_FILES['file_url'];
+		$bannerName = base_url('uploads/') . $this->uploadFile($banner);
+		$fileurl = base_url('uploads/') . $this->uploadFile($file);
 		$date = $date = date("Y-m-d H:i:s");
 		$data = [
 			'title' => $this->input->post('title'),
 			'description' => $this->input->post('description'),
+			'banner_url' => $fileurl,
 			'file_url' => $bannerName,
-			'created_by' => $_SESSION['user_id'],
+			'created_by' => $this->input->post('created_by'),
 			'created_at' => $date,
 			'updated_at' => $date
 		];
@@ -80,21 +83,44 @@ class AdminPeta extends CI_Controller
 
 	public function update($id)
 	{
-		$banner = $_FILES['file_url'];
+		$banner = $_FILES['banner_url'];
+		$peta = $_FILES['file_url'];
 		$date = $date = date("Y-m-d H:i:s");
 
-		if ($banner['name'] != "") {
+		if ($banner['name'] != "" and $peta['name'] != "") {
+			$petaName = $this->uploadFile($peta);
 			$bannerName = $this->uploadFile($banner);
 			$data = [
 				'title' => $this->input->post('title'),
 				'description' => $this->input->post('description'),
-				'file_url' => $bannerName,
+				'created_by' => $this->input->post('created_by'),
+				'banner_url' => $bannerName,
+				'file_url' => $petaName,
+				'updated_at' => $date
+			];
+		} elseif ($banner['name'] != "") {
+			$bannerName = $this->uploadFile($banner);
+			$data = [
+				'title' => $this->input->post('title'),
+				'description' => $this->input->post('description'),
+				'created_by' => $this->input->post('created_by'),
+				'banner_url' => $bannerName,
+				'updated_at' => $date
+			];
+		} elseif ($peta['name'] != "") {
+			$petaName = $this->uploadFile($peta);
+			$data = [
+				'title' => $this->input->post('title'),
+				'description' => $this->input->post('description'),
+				'created_by' => $this->input->post('created_by'),
+				'file_url' => $petaName,
 				'updated_at' => $date
 			];
 		} else {
 			$data = [
 				'title' => $this->input->post('title'),
 				'description' => $this->input->post('description'),
+				'created_by' => $this->input->post('created_by'),
 				'updated_at' => $date
 			];
 		}
@@ -111,8 +137,31 @@ class AdminPeta extends CI_Controller
 			return false;
 		}
 
-		$this->db->where('id', $id);
-		$this->db->delete('peta_kabs');
+		if ($this->delImages($id))
+		{
+			$this->db->where('id', $id);
+			$this->db->delete('peta_kabs');
+		}
 		redirect('admin/peta');
+	}
+
+	private function delImages($id)
+	{
+		$this->db->where('id', $id);
+		$data = $this->db->get('peta_kabs')->row();
+		if ($data)
+		{
+			$filename = str_replace(base_url(), '', $data->banner_url);
+			$filename2 = str_replace(base_url(), '', $data->file_url);
+			if (file_exists($filename) && file_exists($filename2))
+			{
+				unlink($filename);
+				unlink($filename2);
+			}
+			else{
+				return false;
+			}
+		}
+		return true;
 	}
 }

@@ -94,6 +94,7 @@ class AdminFlyer extends CI_Controller
 			$data = [
 				'title' => $this->input->post('title'),
 				'description' => $this->input->post('description'),
+				'created_by' => $this->input->post('created_by'),
 				'banner_url' => $bannerName,
 				'file_url' => $flyerName,
 				'updated_at' => $date
@@ -103,6 +104,7 @@ class AdminFlyer extends CI_Controller
 			$data = [
 				'title' => $this->input->post('title'),
 				'description' => $this->input->post('description'),
+				'created_by' => $this->input->post('created_by'),
 				'banner_url' => $bannerName,
 				'updated_at' => $date
 			];
@@ -111,6 +113,7 @@ class AdminFlyer extends CI_Controller
 			$data = [
 				'title' => $this->input->post('title'),
 				'description' => $this->input->post('description'),
+				'created_by' => $this->input->post('created_by'),
 				'file_url' => $flyerName,
 				'updated_at' => $date
 			];
@@ -118,6 +121,7 @@ class AdminFlyer extends CI_Controller
 			$data = [
 				'title' => $this->input->post('title'),
 				'description' => $this->input->post('description'),
+				'created_by' => $this->input->post('created_by'),
 				'updated_at' => $date
 			];
 		}

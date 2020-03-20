@@ -8,7 +8,7 @@
 
 			</div>
 			<div class="card-body">
-				<form action="<?= base_url("admin/setting/".$data['id']."/update") ?>" method="post" enctype="multipart/form-data">
+				<form action="<?= base_url("admin/settingUpdate") ?>" method="post" enctype="multipart/form-data">
 					<div class="form-group">
 						<label for="">Name</label>
 						<input type="text" name="name" required class="form-control" value="<?= $data['name'] ?>">
@@ -16,7 +16,7 @@
 					<div class="form-group">
 						<label for="">Banner</label>
 						<input type="file" name="banner"  class="form-control">
-						<img width="80" src="<?= base_url('uploads/'.$data['banner_url']) ?>" class="img img-thumbnail" alt="Setting">
+						<img width="80" src="<?= $data['banner_url'] ?>" class="img img-thumbnail" alt="Setting">
 						<br>
 					</div>
 
@@ -41,7 +41,7 @@
 
 					<div class="form-group">
 						<label for="">Facebook</label>
-						<input type="text" name="twitter"  class="form-control" value="<?= $data['facebook'] ?>">
+						<input type="text" name="facebook"  class="form-control" value="<?= $data['facebook'] ?>">
 					</div>
 
 					<button type="submit" class="btn btn-primary">Save</button>

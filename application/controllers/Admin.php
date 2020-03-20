@@ -116,9 +116,14 @@ class Admin extends CI_Controller
 		$this->layout->load('setting', ['title' => 'Master Setting - Admin Panel', 'data' => $data], true);
 	}
 
-	public function settingUpdate($id){
+	public function settingUpdate(){
 		$images = $_FILES['banner'];
-		if ($images['name'] !=""){
+		$exists = $this->db->get('settings')->result();
+
+		$data = $this->input->post();
+
+		if ($images['name'] != "")
+		{
 			$_FILES['file']['name'] = $images['name'];
 			$_FILES['file']['type'] = $images['type'];
 			$_FILES['file']['tmp_name'] = $images['tmp_name'];
@@ -136,17 +141,24 @@ class Admin extends CI_Controller
 
 			if ($this->upload->do_upload('file')) {
 				$uploadData = $this->upload->data();
-				$filename = $uploadData['file_name'];
+				$filename = base_url('uploads/') . $uploadData['file_name'];
 
 			}
-			$data = $this->input->post();
 			$data['banner_url'] = $filename;
-		} else {
-			$data = $this->input->post();
 		}
 
-		$this->db->where('id', $id);
-		$this->db->update('settings', $data);
+		if (count($exists) > 0)
+		{
+			$set = $exists[0];
+			$id = $set->id;
+
+			$this->db->where('id', $id);
+			$this->db->update('settings', $data);
+		}
+		else
+		{
+			$this->db->insert('settings', $data);
+		}
 		redirect('admin/setting');
 	}
 

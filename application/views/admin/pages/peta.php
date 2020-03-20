@@ -29,6 +29,13 @@
 										</div>
 										<div class="col-md-5">
 											<div class="form-group">
+												<input type="text" class="form-control" placeholder="Created by..." name="created_by" required>
+											</div>
+											<div class="form-group">
+												<label>Upload banner</label>
+												<input type="file" name="banner_url" required class="form-control">
+											</div>
+											<div class="form-group">
 												<label>Upload File</label>
 												<input type="file" name="file_url" multiple class="form-control" required>
 											</div>
