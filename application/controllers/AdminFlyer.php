@@ -26,15 +26,15 @@ class AdminFlyer extends CI_Controller
 	{
 		$banner = $_FILES['banner_url'];
 		$flyer = $_FILES['file_url'];
-		$flyerName = $this->uploadFile($flyer);
-		$bannerName = $this->uploadFile($banner);
+		$flyerName = base_url('uploads/') . $this->uploadFile($flyer);
+		$bannerName = base_url('uploads/') . $this->uploadFile($banner);
 		$date = $date = date("Y-m-d H:i:s");
 		$data = [
 			'title' => $this->input->post('title'),
 			'description' => $this->input->post('description'),
 			'banner_url' => $bannerName,
 			'file_url' => $flyerName,
-			'created_by' => $_SESSION['user_id'],
+			'created_by' => $this->input->post('created_by'),
 			'created_at' => $date,
 			'updated_at' => $date
 		];
@@ -133,10 +133,32 @@ class AdminFlyer extends CI_Controller
 		if (!$id) {
 			return false;
 		}
-
-		$this->db->where('id', $id);
-		$this->db->delete('flyers');
+		if ($this->delImages($id))
+		{
+			$this->db->where('id', $id);
+			$this->db->delete('flyers');
+		}
 		redirect('admin/flyer');
+	}
+
+	private function delImages($id)
+	{
+		$this->db->where('id', $id);
+		$data = $this->db->get('flyers')->row();
+		if ($data)
+		{
+			$filename = str_replace(base_url(), '', $data->banner_url);
+			$filename2 = str_replace(base_url(), '', $data->file_url);
+			if (file_exists($filename) && file_exists($filename2))
+			{
+				unlink($filename);
+				unlink($filename2);
+			}
+			else{
+				return false;
+			}
+		}
+		return true;
 	}
 
 }

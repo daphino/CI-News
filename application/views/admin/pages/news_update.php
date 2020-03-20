@@ -24,7 +24,7 @@
 							<input type="file" name="files[]" multiple class="form-control"  accept="image/*">
 						</div>
 						<?php foreach($data['images'] as $key => $item ): ?>
-						<img src="<?= base_url('uploads/'.$item['image_url']) ?>" width="80" class="img img-thumbnail" alt="">
+						<img src="<?= $item['image_url'] ?>" width="80" class="img img-thumbnail" alt="">
 						<?php endforeach; ?>
 					</div>
 				</div>

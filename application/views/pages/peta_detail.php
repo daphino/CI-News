@@ -4,17 +4,17 @@
 			<div class="card">
 				<div class="card-body">
 					<h3 class="m-0"><?= $data['title'] ?></h3>
-					<small style="color: #666;"><?= date_formatted($data['updated_at']) ?> | Oleh : <?= $data['name']?></small>
+					<small style="color: #666;"><?= date_formatted($data['updated_at']) ?> | Oleh : <?= $data['created_by']?></small>
 
 					<div class="image">
-						<img class="img img-thumbnail" src="<?= base_url('assets/peta.jpg') ?>" alt="Detail flyer">
+						<img class="img img-thumbnail my-3" src="<?= $data['banner_url'] ?>" alt="Detail flyer">
 					</div>
 					<hr>
 					<p><?= $data['description'] ?></p>
 
 					<hr>
 					<div class="button-wrapper d-none d-md-block">
-						<a href="<?= base_url('uploads/'.$data['file_url']) ?>" class="btn btn-primary btn-lg mt-3">Download</a>
+						<a href="<?= $data['file_url'] ?>" target="_blank" class="btn btn-primary btn-lg mt-3">Download</a>
 					</div>
 				</div>
 			</div>

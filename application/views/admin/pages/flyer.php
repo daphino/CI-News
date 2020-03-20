@@ -20,7 +20,7 @@
 									<div class="row">
 										<div class="col-md-7">
 											<div class="form-group">
-												<input type="text" name="title" required class="form-control" placeholder="Enter news title">
+												<input type="text" name="title" required class="form-control" placeholder="Enter flyer title">
 											</div>
 											<div class="form-group">
 												<textarea name="description" required rows="5" placeholder="Enter description" class="form-control"></textarea>
@@ -28,6 +28,9 @@
 
 										</div>
 										<div class="col-md-5">
+											<div class="form-group">
+												<input type="text" class="form-control" placeholder="Created by..." name="created_by" required>
+											</div>
 											<div class="form-group">
 												<label>Upload banner</label>
 												<input type="file" name="banner_url" required class="form-control">

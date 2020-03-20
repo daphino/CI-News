@@ -21,9 +21,28 @@ class Faker extends CI_Controller{
         $this->news($n);
         $this->flyer($n);
         $this->peta($n);
+        $this->user($n);
 
         return 'success';
     }
+
+    private function user($n)
+	{
+		$this->db->empty_table('users');
+		$this->db->insert('users', [
+			'name' => $this->faker->name(),
+			'email' => 'admin@admin.com',
+			'password' => password_hash('password', PASSWORD_DEFAULT)
+		]);
+		for($i = 0; $i<$n;$i++)
+		{
+			$this->db->insert('users', [
+				'name' => $this->faker->name(),
+				'email' => $this->faker->email,
+				'password' => password_hash('password', PASSWORD_DEFAULT)
+			]);
+		}
+	}
 
     private function peta($n)
     {

@@ -21,15 +21,18 @@
 							</div>
 							<div class="col-md-5">
 								<div class="form-group">
+									<input type="text" required placeholder="Created by..." name="created_by" value="<?= $data['flyer_item']['created_by'] ?>" class="form-control">
+								</div>
+								<div class="form-group">
 									<label>Upload banner</label>
 									<input type="file" name="banner_url" class="form-control">
-									<img width="80" src="<?= base_url('uploads/'.$data['flyer_item']['banner_url']) ?>" class="img img-thumbnail" alt="Flyer">
+									<img width="80" src="<?= $data['flyer_item']['banner_url'] ?>" class="img img-thumbnail" alt="Flyer">
 									<br>
 								</div>
 								<div class="form-group">
 									<label>Upload File</label>
 									<input type="file" name="file_url" multiple class="form-control" >
-									<a href="<?= base_url('uploads/'.$data['flyer_item']['file_url']) ?>"><?= $data['flyer_item']['title'] ?></a>
+									<a target="_blank" href="<?= $data['flyer_item']['file_url'] ?>"><?= $data['flyer_item']['title'] ?></a>
 								</div>
 							</div>
 						</div>

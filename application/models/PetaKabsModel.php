@@ -17,20 +17,11 @@ class PetaKabsModel extends CI_Model
 	}
 
 	public function gets($id = false){
-		if ($id == FALSE){
-			$this->db->select('*, p.id as fid');
-			$this->db->from('peta_kabs as p');
-			$this->db->join('users as u','p.created_by = u.id');
-			$this->db->order_by('updated_at','desc');
-			$q = $this->db->get();
-			return $q->result_array();
+		if ($id){
+			$this->db->where('id', $id);
+			return $this->db->get('peta_kabs')->row_array();
 		}
-		$this->db->select('*, p.id as fid');
-		$this->db->from('peta_kabs as p');
-		$this->db->join('users as u','p.created_by = u.id');
-		$this->db->where('p.id', $id);
-		$q = $this->db->get();
-		return $q->row_array();
+		return $this->db->get('peta_kabs')->result_array();
 	}
 
 

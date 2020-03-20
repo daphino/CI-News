@@ -22,7 +22,34 @@ class NewsModel extends CI_Model
     }
 
     $this->db->where('id', $id);
-    return $this->db->delete('news');
+    $this->db->delete('news');
+
+    return $this->delImages($id);
+  }
+
+  private function delImages($id)
+  {
+  	if ($this->delLocalImages($id))
+	{
+		$this->db->where('news_id', $id);
+		$this->db->delete('new_images');
+		return true;
+	}
+  }
+
+  private function delLocalImages($id)
+  {
+  	$this->db->where('news_id', $id);
+  	$data = $this->db->get('new_images')->result();
+  	foreach ($data as $item)
+	{
+		$filename = str_replace(base_url(),'', $item->image_url);
+		if (file_exists($filename))
+		{
+			unlink($filename);
+		}
+	}
+  	return true;
   }
 
   public function update($data = false, $id = false)

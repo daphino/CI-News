@@ -25,16 +25,17 @@ class Auth extends CI_Controller
 			'password' => $password
 		);
 
-		$cek = $this->UserModel->checkLog("users",$where)->num_rows();
+		$cek = $this->UserModel->checkLog("users",$where);
 
 
 
 
-		if($cek > 0){
-			$user = $this->UserModel->checkLog("users",$where)->row_array();
-
-//			set session
-			$_SESSION['user_id'] = $user['id'];
+		if($cek){
+			$this->db->where('email', $where['email']);
+			$data = $this->db->get('users')->row_array();
+			$_SESSION['user_id'] = $data['id'];
+			$_SESSION['name'] = $data['name'];
+			$_SESSION['email'] = $data['email'];
 			$_SESSION['logged_in'] = true;
 
 

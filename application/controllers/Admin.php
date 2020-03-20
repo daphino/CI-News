@@ -72,7 +72,7 @@ class Admin extends CI_Controller
 					$uploadData = $this->upload->data();
 					$filename = $uploadData['file_name'];
 
-					$data['image_url'] = $filename;
+					$data['image_url'] = base_url('uploads/'.$filename);
 					$data['news_id'] = $id;
 					$this->db->insert('new_images', $data);
 				}
@@ -112,7 +112,7 @@ class Admin extends CI_Controller
 	}
 
 	public function setting(){
-		$data = $this->db->get('settings')->result_array()['0'];
+		$data = $this->db->get('settings')->row_array();
 		$this->layout->load('setting', ['title' => 'Master Setting - Admin Panel', 'data' => $data], true);
 	}
 

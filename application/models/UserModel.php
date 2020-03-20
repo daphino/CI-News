@@ -28,6 +28,22 @@ class UserModel extends CI_Model
 	}
 
 	function checkLog($table,$where){
-		return $this->db->get_where($table,$where);
+		$this->db->where('email', $where['email']);
+		$data = $this->db->get($table)->row();
+		if ($data)
+		{
+			if (password_verify($where['password'], $data->password))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		else
+		{
+			return false;
+		}
 	}
 }
