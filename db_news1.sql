@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Mar 16, 2020 at 05:32 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.3.13
+-- Host: 127.0.0.1
+-- Waktu pembuatan: 20 Mar 2020 pada 19.40
+-- Versi server: 10.4.6-MariaDB
+-- Versi PHP: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_news`
+-- Database: `db_news1`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categories`
+-- Struktur dari tabel `categories`
 --
 
 CREATE TABLE `categories` (
@@ -37,7 +37,7 @@ CREATE TABLE `categories` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `data_dasar`
+-- Struktur dari tabel `data_dasar`
 --
 
 CREATE TABLE `data_dasar` (
@@ -55,7 +55,7 @@ CREATE TABLE `data_dasar` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `data_dasar_detail`
+-- Struktur dari tabel `data_dasar_detail`
 --
 
 CREATE TABLE `data_dasar_detail` (
@@ -68,7 +68,7 @@ CREATE TABLE `data_dasar_detail` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `flyers`
+-- Struktur dari tabel `flyers`
 --
 
 CREATE TABLE `flyers` (
@@ -85,7 +85,7 @@ CREATE TABLE `flyers` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `news`
+-- Struktur dari tabel `news`
 --
 
 CREATE TABLE `news` (
@@ -101,7 +101,7 @@ CREATE TABLE `news` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `new_images`
+-- Struktur dari tabel `new_images`
 --
 
 CREATE TABLE `new_images` (
@@ -113,23 +113,24 @@ CREATE TABLE `new_images` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `peta_kabs`
+-- Struktur dari tabel `peta_kabs`
 --
 
 CREATE TABLE `peta_kabs` (
   `id` int(11) NOT NULL,
   `title` varchar(191) NOT NULL,
+  `banner_url` varchar(191) NOT NULL,
   `description` varchar(191) NOT NULL,
   `file_url` varchar(191) NOT NULL,
   `created_by` varchar(191) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `settings`
+-- Struktur dari tabel `settings`
 --
 
 CREATE TABLE `settings` (
@@ -146,7 +147,7 @@ CREATE TABLE `settings` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sub_categories`
+-- Struktur dari tabel `sub_categories`
 --
 
 CREATE TABLE `sub_categories` (
@@ -158,7 +159,7 @@ CREATE TABLE `sub_categories` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
@@ -173,126 +174,126 @@ CREATE TABLE `users` (
 --
 
 --
--- Indexes for table `categories`
+-- Indeks untuk tabel `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `data_dasar`
+-- Indeks untuk tabel `data_dasar`
 --
 ALTER TABLE `data_dasar`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `data_dasar_detail`
+-- Indeks untuk tabel `data_dasar_detail`
 --
 ALTER TABLE `data_dasar_detail`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `flyers`
+-- Indeks untuk tabel `flyers`
 --
 ALTER TABLE `flyers`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `news`
+-- Indeks untuk tabel `news`
 --
 ALTER TABLE `news`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `new_images`
+-- Indeks untuk tabel `new_images`
 --
 ALTER TABLE `new_images`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `peta_kabs`
+-- Indeks untuk tabel `peta_kabs`
 --
 ALTER TABLE `peta_kabs`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `settings`
+-- Indeks untuk tabel `settings`
 --
 ALTER TABLE `settings`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `sub_categories`
+-- Indeks untuk tabel `sub_categories`
 --
 ALTER TABLE `sub_categories`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `categories`
+-- AUTO_INCREMENT untuk tabel `categories`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `data_dasar`
+-- AUTO_INCREMENT untuk tabel `data_dasar`
 --
 ALTER TABLE `data_dasar`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `data_dasar_detail`
+-- AUTO_INCREMENT untuk tabel `data_dasar_detail`
 --
 ALTER TABLE `data_dasar_detail`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `flyers`
+-- AUTO_INCREMENT untuk tabel `flyers`
 --
 ALTER TABLE `flyers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `news`
+-- AUTO_INCREMENT untuk tabel `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
--- AUTO_INCREMENT for table `new_images`
+-- AUTO_INCREMENT untuk tabel `new_images`
 --
 ALTER TABLE `new_images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `peta_kabs`
+-- AUTO_INCREMENT untuk tabel `peta_kabs`
 --
 ALTER TABLE `peta_kabs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `settings`
+-- AUTO_INCREMENT untuk tabel `settings`
 --
 ALTER TABLE `settings`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `sub_categories`
+-- AUTO_INCREMENT untuk tabel `sub_categories`
 --
 ALTER TABLE `sub_categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
